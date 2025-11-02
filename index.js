@@ -23,10 +23,10 @@ const PORT = process.env.PORT;
 //   credentials: true,
 // };
 
-// const corsFrontend = cors({
-//   origin: "http://localhost:5173",
-//   credentials: true,
-// });
+const corsFrontend = cors({
+  origin:["https://tender-frontend-five.vercel.app", "http://localhost:5173"],
+  credentials: true,
+});
 
 // const corsRazorpay = cors({ origin: "*", credentials: false });
 // app.use(cors(corsOption));
