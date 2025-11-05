@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
 
-let isConnected = false; // ✅ Prevent re-connecting every time
-
 const connectDataBase = async (req, res) => {
-  if (isConnected) {
+  if (mongoose.connection.readyState >= 1) {
     console.log("⚡ Already connected to MongoDB");
     return;
   }

@@ -58,6 +58,9 @@ import subscriptionRoute from "./routes/subscriptionRoute.js";
 dotenv.config();
 
 const app = express();
+
+// ✅ Start server
+
 const PORT = process.env.PORT || 10000; // default fallback for Render
 
 const allowedOrigins = [
@@ -81,6 +84,9 @@ app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+connectDataBase();
+
+
 // ✅ Default home route to confirm deployment
 app.get("/", (req, res) => {
   res.send("✅ Tender Backend is running successfully on Render!");
@@ -95,7 +101,7 @@ app.use("/api/v1/payment", paymentRoute);
 app.use("/api/v1/subscription", subscriptionRoute);
 
 // ✅ Start server
-connectDataBase();
+// connectDataBase();
 // app.listen(PORT, () => {
 //   connectDataBase();
 //   console.log(`🚀 Server running on port ${PORT}`);
