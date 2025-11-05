@@ -98,7 +98,10 @@ app.use("/api/v1/payment", paymentRoute);
 app.use("/api/v1/subscription", subscriptionRoute);
 
 // ✅ Start server
-app.listen(PORT, () => {
-  connectDataBase();
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+connectDataBase();
+// app.listen(PORT, () => {
+//   connectDataBase();
+//   console.log(`🚀 Server running on port ${PORT}`);
+// });
+
+export default app;
