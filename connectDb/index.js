@@ -6,10 +6,7 @@ const connectDataBase = async (req, res) => {
     return;
   }
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const conn = await mongoose.connect(process.env.MONGO_URL);
     console.log(`✅ MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
     console.error("❌ MongoDB connection failed:", error.message);
