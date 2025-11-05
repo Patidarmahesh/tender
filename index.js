@@ -77,7 +77,7 @@ app.use(
 );
 
 // ✅ Handle preflight requests explicitly
-app.options("*", cors());
+// app.options("*", cors());
 
 // ✅ Core middlewares
 app.use(express.json({ limit: "100mb" }));

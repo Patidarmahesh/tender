@@ -10,7 +10,6 @@ const connectDataBase = async (req, res) => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    isConnected = true;
     console.log(`✅ MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
     console.error("❌ MongoDB connection failed:", error.message);
