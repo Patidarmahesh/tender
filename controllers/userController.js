@@ -67,7 +67,7 @@ export const login = async (req, res) => {
     }
 
     const token = await jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
-      expiresIn: "1d",
+      expiresIn: "7d",
     });
 
     user = {
@@ -78,21 +78,12 @@ export const login = async (req, res) => {
       role: user.role,
     };
 
-    return res
-      .cookie("token", token, {
-        httpOnly: true,
-        // secure: true,
-        // sameSite: "none",
-        secure: process.env.NODE_ENV === "production", // ✅ Render pe true, local pe false
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // ✅ adjust for cross-origin
-        maxAge: 1 * 24 * 60 * 60 * 1000,
-      })
-      .json({
-        message: `Welcome ${user.userName}`,
-        success: true,
-        user,
-        token,
-      });
+    return res.status(200).json({
+      message: `Welcome ${user.userName}`,
+      success: true,
+      user,
+      token,
+    });
   } catch (error) {
     console.log(error);
   }
@@ -111,7 +102,7 @@ export const googleLoginSuccess = async (req, res) => {
         { userId: user._id },
         process.env.SECRET_KEY,
         {
-          expiresIn: "1d",
+          expiresIn: "7d",
         }
       );
       user = {
@@ -122,24 +113,18 @@ export const googleLoginSuccess = async (req, res) => {
         role: user?.role,
       };
 
-      return res
-        .cookie("token", token, {
-          httpOnly: true,
-          sameSite: "none",
-          maxAge: 1 * 24 * 60 * 60 * 1000,
-        })
-        .json({
-          message: `Welcome ${user.userName} google login successfully`,
-          success: true,
-          user,
-          token,
-        });
+      return res.status(200).json({
+        message: `Welcome ${user.userName} google login successfully`,
+        success: true,
+        user,
+        token,
+      });
     } else {
       const token = await jwt.sign(
         { userId: user._id },
         process.env.SECRET_KEY,
         {
-          expiresIn: "1d",
+          expiresIn: "7d",
         }
       );
       user = {
@@ -150,18 +135,12 @@ export const googleLoginSuccess = async (req, res) => {
         role: user?.role,
       };
 
-      return res
-        .cookie("token", token, {
-          httpOnly: true,
-          sameSite: "none",
-          maxAge: 1 * 24 * 60 * 60 * 1000,
-        })
-        .json({
-          message: `Welcome ${user.userName} google login successfully`,
-          success: true,
-          user,
-          token,
-        });
+      return res.status(200).json({
+        message: `Welcome ${user.userName} google login successfully`,
+        success: true,
+        user,
+        token,
+      });
     }
   } catch (error) {
     console.log(error);
@@ -188,14 +167,10 @@ export const getloginUser = async (req, res) => {
 
 export const logoutUser = async (req, res) => {
   try {
-    return res
-      .cookie("token", "", {
-        maxAge: 0,
-      })
-      .json({
-        message: "looged out sucessfully!",
-        success: true,
-      });
+    return res.status(200).json({
+      message: "looged out sucessfully!",
+      success: true,
+    });
   } catch (error) {
     console.log(error);
   }

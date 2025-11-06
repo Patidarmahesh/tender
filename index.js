@@ -71,7 +71,7 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: allowedOrigins,
-    credentials: true,
+    credentials: false,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
@@ -80,7 +80,7 @@ app.use(
 // ✅ Core middlewares
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+// app.use(cookieParser());
 
 connectDataBase();
 
