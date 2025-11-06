@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import cookie from "cookie-parser";
+import { log } from "console";
 
 // const userAuth = async (req, res, next) => {
 //   try {
@@ -51,7 +52,7 @@ const userAuth = async (req, res, next) => {
     }
     // 2️⃣ Token ko split karo
     const token = authHeader.split(" ")[1];
-
+    
     const decode = await jwt.verify(token, process.env.SECRET_KEY);
     if (!decode) {
       return res.status(401).json({

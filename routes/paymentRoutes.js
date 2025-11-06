@@ -16,6 +16,6 @@ paymentRoute.post("/create-order", userAuth, createOrder);
 paymentRoute.post("/verify-payment", userAuth, verifyPayment);
 paymentRoute.get("/all-payment", userAuth, getAllPayment);
 paymentRoute.get("/check-payment-status", userAuth, checkStatus);
-paymentRoute.post("/update-payment-status/:id", updatePaymentStatus);
+paymentRoute.post("/update-payment-status/:id",userAuth, updatePaymentStatus);
 
 export default paymentRoute;

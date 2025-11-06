@@ -61,7 +61,7 @@ const app = express();
 
 // ✅ Start server
 
-const PORT = process.env.PORT || 10000; // default fallback for Render
+const PORT = process.env.PORT || 80000; // default fallback for Render
 
 const allowedOrigins = [
   "http://localhost:5173",
@@ -99,7 +99,7 @@ app.use("/api/v1/payment", paymentRoute);
 app.use("/api/v1/subscription", subscriptionRoute);
 
 // ✅ Start server
-// connectDataBase();
+connectDataBase();
 // app.listen(PORT, () => {
 //   connectDataBase();
 //   console.log(`🚀 Server running on port ${PORT}`);
